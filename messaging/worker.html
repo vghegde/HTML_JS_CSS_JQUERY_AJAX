@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Count numbers: <output id="result"></output></p>
+<img alt="Vinay" src="" height:"500px" width="500px" id="img">
+<div><img alt="Vinay3" src="" height:"500px" width="500px" id="img2"></div>
+<button onclick="startWorker()">Start Worker</button> 
+<button onclick="stopWorker()">Stop Worker</button>
+<script>
+var w;
+
+function startWorker() {
+    if(typeof(Worker) !== "undefined") {
+        if(typeof(w) == "undefined") {
+            w = new Worker("demo.js");
+            w2 = new Worker("demo.js");
+        }
+        w.onmessage = function(event) {
+
+        	document.getElementById("img").src = event.data;
+        };
+        
+        w2.onmessage = function(event) {
+
+        	document.getElementById("img2").src = event.data;
+        };
+        
+    } else {
+        document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Workers...";
+    }
+}
+
+function stopWorker() { 
+    w.terminate();
+    w = undefined;
+    
+    w2.terminate();
+    w2 = undefined;
+}
+</script>
+
+</body>
+</html>

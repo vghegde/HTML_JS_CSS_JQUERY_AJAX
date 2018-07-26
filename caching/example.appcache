@@ -1,0 +1,17 @@
+CACHE MANIFEST
+# v2.0 : 29-06-2018
+ 
+CACHE:
+# pages
+cached.html
+ 
+# styles & scripts
+demo1.js
+ 
+# images
+
+NETWORK:
+demo2.js
+ 
+FALLBACK:
+/ cached.html

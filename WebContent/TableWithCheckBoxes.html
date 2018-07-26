@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<style type="text/css">
+.highlight{
+	background-color: red;
+	
+}
+</style>
+
+<script src="jQuery.js"></script>
+<script type="text/javascript">
+
+$(function(){
+	
+	$(".row").click(function(){
+		//alert("Clicked")
+		//alert("clicked"+$(this).attr("id"))
+		if($(this).hasClass('highlight')){ //cannot use checked prop as event bubbling happening.
+			$(this).find(".chk").prop('checked',false);
+			$(this).removeClass('highlight')
+		}else{
+			$(this).find(".chk").prop('checked',true);
+			$(this).addClass('highlight')
+			
+		}
+		
+		alert("cookie setting")
+		//var key = $(this).find(".chk").attr("id");
+		//var val = $(this).find(".chk").prop("checked");
+		
+		//	document.cookie=key+"="+val;
+		
+	 	var key = $(this).attr("id");
+		var val = $(this).hasClass("highlight");
+		 
+		 document.cookie=key+"="+val;
+			
+		alert(document.cookie)
+		
+		
+	})
+	
+	alert(document.cookie)
+	
+	//On refresh load cookies	
+	var cookies = document.cookie.split(";");
+	console.log(cookies);
+	for (var i = 0; i < cookies.length; i++) {
+		data = cookies[i].split("=");
+		
+		var key = data[0].trim();
+		var val = data[1].trim();
+		key='#'+key;
+		alert(key+","+val)
+		
+		if(Boolean(val)){
+			$(key).addClass('highlight')
+			$(key).find(".chk").prop('checked',true);
+		}else{			
+			$(key).removeClass('highlight')
+			$(key).find(".chk").prop('checked',false);
+		}
+	}
+	
+	
+	
+	
+	
+})
+
+
+
+</script>
+
+</head>
+<body>
+	<table border="1" align="center">
+		<tbody>
+			<tr class="row" id="row1">
+				<td ><input id="chk1" type="checkbox" class="chk"></td>
+				<td>Vinay</td>
+				<td>Hegde</td>
+			</tr>
+			<tr class="row" id="row2">
+				<td><input id="chk2" type="checkbox" class="chk"></td>
+				<td>Vijay</td>
+				<td>Hegde</td>
+			</tr>
+			<tr class="row" id="row3">
+				<td><input id="chk3" type="checkbox" class="chk"></td>
+				<td>Vimal</td>
+				<td>Hegde</td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<style>
+#div1 {
+width:24%;
+height:250px;
+border:1px solid #aaaaaa;
+float: left;
+}
+</style>
+<script>
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+function drag(ev) {
+    //ev.dataTransfer.setData("text", ev.target.id);
+	sessionStorage.setItem('source',ev.target.src);
+}
+
+function drop(ev) {
+    ev.preventDefault();
+    //var data = ev.dataTransfer.getData("text");
+	var data =sessionStorage.getItem('source');
+	alert(data)
+    ev.target.src = data;
+	sessionStorage.removeItem('drag');
+}
+</script>
+</head>
+<body>
+
+<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
+	<img  src="" height="200px" width="200px" id="img2" >
+
+</div>
+
+<div id="drag1" draggable="true" ondragstart="drag(event)" >
+	<img  src="Desert.jpg" height="100px" width="100px" id="img" >
+</div>
+
+<div id="drag1" draggable="true" ondragstart="drag(event)" >
+	<img  src="img2.jpg" height="100px" width="100px" id="img" >
+</div>
+
+<div id="drag1" draggable="true" ondragstart="drag(event)" >
+	<img  src="Desert.jpg" height="100px" width="100px" id="img" >
+</div>
+
+</body>
+</html>

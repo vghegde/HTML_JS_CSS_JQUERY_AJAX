@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script type="text/javascript">
+	
+	var delay = seconds => {
+		return new Promise( (resolve, reject) => { 
+			if(typeof seconds !== 'number'){
+				reject(new Error('Seconds should be a number'));
+			}	
+			
+			setTimeout(
+					() => resolve(`${seconds} delay is UP`) ,
+					seconds*1000
+					
+			);
+		
+		});
+	}
+	
+	
+	
+	
+	
+</script>
+
+</head>
+<body>
+
+</body>
+</html>

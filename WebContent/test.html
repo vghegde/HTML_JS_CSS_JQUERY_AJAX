@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+
+<div style="height: 100%">
+    <!-- outer offcanvas wrapper -->
+    <div class="oj-offcanvas-outer-wrapper" style="height:100%">
+        <!-- outer start offcanvas -->
+        <div id="oDrawer" class="oj-offcanvas-start oj-lg-2" style="margin-top: 20px; width: 100%; height: 725px">
+            <div>
+                <!-- Left Navigation layout -->
+                <!-- ko if: leftoffcanvas.leftNavigationWidgetVisible -->
+                <div id="leftNavLayout" style="height: 100%; width: 100%" data-bind="ojModule: leftoffcanvas.leftNavigationModule"></div>
+                <!-- /ko -->
+            </div>
+        </div>
+        <!-- main content -->
+        <div id="oMain" style="height: 100%">
+            <div id="mask2" style="background: #ff0000; display: block;position: absolute; top: 0; right: 0; bottom: 0; left: 0; opacity: 0.5; z-index: 10"></div>
+                
+            <!-- outer offcanvas launch button -->
+            <button style="min-height: 30px; margin-top: 10px; margin-left: 20px" data-bind="click: leftoffcanvas.toggleOuter, ojComponent: {component: 'ojButton',
+                    chroming:'half', display: 'icons'}"><span slot="startIcon" class="oj-fwk-icon-hamburger oj-fwk-icon"></span></button>
+            <div id="content-area" class="oj-panel" style="margin-left: 20px; width: 97%; height: 700px">
+                <div id="contentArea" style="height: 100%; width: 100%;background=#ff0000" data-bind="ojModule: leftoffcanvas.contentAreaModule()"> VGHEGDE
+
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
