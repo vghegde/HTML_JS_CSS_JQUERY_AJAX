@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+<script type="text/javascript">
+	function validate(){
+		var uname = document.forms.register.uname.value;
+		var pass = document.forms.register.pass.value;
+		var mobile = document.forms.register.mobile.value;
+		var email = document.forms.register.email.value;
+
+		
+		
+		var status=true;
+		var msg="";
+		
+		if(uname.length===0){
+			msg+="<h4>Username cannot be empty</h4>";
+			status = false;
+			document.forms.register.uname.style.borderColor = "red";
+		}
+		
+		
+		
+		if(pass.length < 4){
+			msg+="<h4>password at least 5 chars</h4>";
+			status = false;
+			document.forms.register.pass.style.borderColor = "red";
+		}
+		
+		if(mobile.length < 1){
+			msg+="<h4>movile No is empty</h4>";
+			status = false;
+			document.forms.register.mobile.style.borderColor = "red";
+		}else{
+			
+			if(mobile.length!=10 || isNaN(Number(mobile))){
+				msg+="<h4>Enter a valid Mobile nuber</h4>";
+				status = false;
+				document.forms.register.mobile.style.borderColor = "red";
+			}
+				
+		}
+		
+		
+		
+		if(email.length < 4){
+			msg+="<h4>empty email</h4>";
+			status = false;
+			document.forms.register.email.style.borderColor = "red";
+		}else{
+			if(email.indexOf('@')==-1 || email.indexOf('@')!=email.lastIndexOf('@') || email.indexOf('@')==0 || email.indexOf('@')==(email.length-1) ){
+				msg+="<h4>Enter a valid email</h4>";
+				status = false;	
+				document.forms.register.email.style.borderColor = "red";
+			}
+			
+		}
+		
+		
+		var err = document.getElementById("err")
+		err.innerHTML = msg;
+			
+		return false;
+		
+	}
+
+</script>
+
+</head>
+<body>
+
+	<form name="register" onsubmit="return validate()" action="register.jsp" method="get">
+
+<div id="err"></div>
+
+
+		<table border="1" align="center">
+
+			<tbody>
+
+				<tr>
+					<td>UserName:</td>
+					<td><input type="text" name="uname" /></td>
+				</tr>
+
+				<tr>
+					<td>Password:</td>
+					<td><input type="password" name="pass" /></td>
+				</tr>
+
+
+				<tr>
+					<td>Mobile:</td>
+					<td><input type="text" name="mobile" /></td>
+				</tr>
+				
+				<tr>
+					<td>Email:</td>
+					<td><input type="text" name="email" /></td>
+				</tr>
+
+				<tr>
+					<td><input type="radio" name="gender" value="Female" />Female
+					</td>
+				</tr>
+
+
+				<tr>
+					<td><input type="radio" name="gender" value="Male" />Male</td>
+				</tr>
+
+
+
+				<tr>
+					<td>Skills</td>
+					<td><input type="checkbox" name="skills" value="JavaScript" />JS
+						<input type="checkbox" name="skills" value="HTML" />HTML <input
+						type="checkbox" name="skills" value="Java" />Java</td>
+				</tr>
+
+				<tr>
+					<td>Preferred location</td>
+					<td><select name="loc" multiple>
+							<option value="India">IND</option>
+							<option value="China">CHN</option>
+							<option value="America">US</option>
+					</select></td>
+
+				</tr>
+
+				<tr>
+					<td>about me</td>
+					<td><textarea rows="10" cols="50"> 
+					</textarea></td>
+				</tr>
+
+				<tr >
+					<td colspan="2"  align=center ><input type="submit" value="register Me" /></td>
+				</tr>
+
+
+			</tbody>
+		</table>
+	</form>
+</body>
+</html>

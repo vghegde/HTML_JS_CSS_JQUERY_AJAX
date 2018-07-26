@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Assignment1Form</title>
+
+<style type="text/css">
+.tbody td {
+	font-weight: bold;
+}
+</style>
+
+</head>
+<body>
+
+	<script type="text/javascript">
+		window.onload = function() {
+
+			var eid = document.getElementById("id");
+
+			eid.addEventListener(
+							'blur',
+							function() {
+
+								var inputFiledsToPopulate = document
+										.getElementsByClassName("inputFields");
+
+								//alert(inputFiledsToPopulate);
+								var eidValue = this.value;
+								//alert(eidValue);
+
+								var xhr = new XMLHttpRequest();
+								xhr.open('GET', 'employeeData.json', true);
+
+								xhr.onreadystatechange = function() {
+									if (xhr.readyState == 4 && xhr.status==200) {
+										//alert(xhr.status)	
+										console.log(xhr.responseText)
+
+										var empObjArr = JSON
+												.parse(xhr.responseText)
+										console.log(empObjArr)
+										var matched = false;
+										for (var i = 0; i < empObjArr.length; i++) {
+
+											if (empObjArr[i].id === eidValue) {
+												matched = true;
+												/*
+													var keys=[]
+													for (key in empObjArr[i])
+														keys.push(key)
+														
+													console.log(keys)	
+													
+													for (var j = 0; j < keys.length; j++) {									
+														document.getElementById(keys[j]).value = empObjArr[i][keys[j]]
+													}*/
+
+												for (var j = 0; j < inputFiledsToPopulate.length; j++) {
+													inputFiledsToPopulate[j].value = empObjArr[i][inputFiledsToPopulate[j].id]
+												}
+											}
+										}
+										if (!matched) {
+											for (var j = 0; j < inputFiledsToPopulate.length; j++) {
+												inputFiledsToPopulate[j].value = "";
+											}
+											alert("Emplyee id " + eidValue
+													+ " does not exist.");
+
+										}
+
+									}
+								}
+								xhr.send();
+							});
+		}
+	</script>
+
+	<form action="register.jsp" method="get">
+
+		<table border="1" align="center">
+
+			<tbody class="tbody">
+
+				<tr>
+					<td>Employee ID:</td>
+					<td><input type="text" id="id" /></td>
+				</tr>
+
+				<tr>
+					<td>First Name:</td>
+					<td><input type="text" id="fname" class="inputFields" /></td>
+				</tr>
+
+				<tr>
+					<td>Last name:</td>
+					<td><input type="text" id="lname" class="inputFields" /></td>
+				</tr>
+
+				<tr>
+					<td>E mail:</td>
+					<td><input type="text" id="email" class="inputFields" /></td>
+				</tr>
+
+				<tr>
+					<td>Mobile:</td>
+					<td><input type="text" id="mobile" class="inputFields" /></td>
+				</tr>
+
+				<tr>
+					<td>Department:</td>
+					<td><input type="text" id="dept" class="inputFields" /></td>
+				</tr>
+
+				<tr>
+					<td>Location:</td>
+					<td><input type="text" id="location" class="inputFields" /></td>
+				</tr>
+
+
+
+
+				<!--  tr>
+					<td colspan="2" align=center><input type="submit"
+						value="Register Me!" /></td>
+				</tr-->
+
+
+			</tbody>
+		</table>
+	</form>
+
+</body>
+</html>

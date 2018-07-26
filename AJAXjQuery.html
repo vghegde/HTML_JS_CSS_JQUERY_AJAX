@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+<script src="jQuery.js"></script>
+<script type="text/javascript">
+
+$(function () {
+	
+	$("#btn").click(function () {
+		
+		var obj = {
+				type:"GET",
+				url:"employeeData.json",	
+				success: function (response){
+					console.log(response)
+					$("#main").html(response);
+				},
+				error:function(xhr){
+					$("#main").html(xhr.status);
+				}
+		}
+		
+		$.ajax(obj);
+		
+		
+	})
+})
+
+</script>
+</head>
+<body>
+
+</body>
+<div id="main" >
+	<button id="btn">
+	Click here</button>
+</div>
+
+</html>

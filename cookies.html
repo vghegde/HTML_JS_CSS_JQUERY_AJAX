@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<script type="text/javascript">
+
+window.onload(function (){
+
+	alert(document.cookie);
+	document.cookie="uname=sachin;path=/JSTraining";
+	document.cookie="dept=IND";
+	alert(document.cookie);
+			
+	document.getElementsByTagName("h1").innerHTML=document.cookie;		
+	
+})
+</script>
+
+<div>
+<h1>document.cookie</h1> </div>
+
+</body>
+</html>

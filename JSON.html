@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+<script src = main.js></script>
+
+<script type="text/javascript">
+	//data = '[{"fname":"Sachin", "lname":"T"},{"fname":"Rahul", "lname":"D"},{"fname":"Saurav", "lname":"G"}]'
+	var obj = JSON.parse(data);
+	console.log(obj)
+	
+	
+	window.onload= function(){
+		var btn = document.getElementById("btn");
+		
+		
+			var xhr = new XMLHttpRequest();
+			xhr.open('GET','json.txt',true);
+			xhr.onreadystatechange = function (){
+			if(xhr.readyState==4){
+					var main=document.getElementById("main");
+						main.innerHTML=xhr.responseText;
+				}			
+			}
+			xhr.send();
+
+		
+	}
+	
+
+</script>
+
+<div id="main">here
+	
+</div>
+
+
+</body>
+</html>

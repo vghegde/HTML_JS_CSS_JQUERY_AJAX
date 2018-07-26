@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+<script src="jQuery.js"></script>
+<script type="text/javascript">
+
+$(function (){
+		
+	$(".inputFields").blur(function(){
+		var key = $(this).attr("id");
+		var val = $(this).val();
+				
+		document.cookie = key+"="+val;
+		
+	});
+	
+	//On refresh load cookies	
+	var cookies = document.cookie.split(";");
+	console.log(cookies);
+	for (var i = 0; i < cookies.length; i++) {
+		data = cookies[i].split("=");
+		
+		var key = data[0].trim();
+		var val = data[1].trim();
+		key='#'+key;
+		
+		$(key).val(val);
+	}
+	
+	
+})
+
+
+</script>
+</head>
+<body>
+
+
+
+
+
+	<form action="register.jsp" method="get">
+
+		<table border="1" align="center">
+
+			<tbody class="tbody">
+
+
+				<tr>
+					<td>Username:</td>
+					<td><input type="text" id="uname" class="inputFields" /></td>
+				</tr>
+
+				<tr>
+					<td>E mail:</td>
+					<td><input type="text" id="email" class="inputFields" /></td>
+				</tr>
+
+				<tr>
+					<td>Mobile:</td>
+					<td><input type="text" id="mobile" class="inputFields" /></td>
+				</tr>
+
+				<tr>
+					<td>Department:</td>
+					<td><input type="text" id="dept" class="inputFields" /></td>
+				</tr>
+
+				<tr>
+					<td>Location:</td>
+					<td><input type="text" id="location" class="inputFields" /></td>
+				</tr>
+
+			</tbody>
+		</table>
+	</form>
+
+
+</body>
+</html>
